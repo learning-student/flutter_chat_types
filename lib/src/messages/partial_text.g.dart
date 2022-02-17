@@ -6,13 +6,15 @@ part of 'partial_text.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PartialText _$PartialTextFromJson(Map<String, dynamic> json) => PartialText(
-      metadata: json['metadata'] as Map<String, dynamic>?,
-      previewData: json['previewData'] == null
-          ? null
-          : PreviewData.fromJson(json['previewData'] as Map<String, dynamic>),
-      text: json['text'] as String,
-    );
+PartialText _$PartialTextFromJson(Map<String, dynamic> json) {
+  return PartialText(
+    metadata: json['metadata'] as Map<String, dynamic>?,
+    previewData: json['previewData'] == null
+        ? null
+        : PreviewData.fromJson(json['previewData'] as Map<String, dynamic>),
+    text: json['text'] as String,
+  );
+}
 
 Map<String, dynamic> _$PartialTextToJson(PartialText instance) {
   final val = <String, dynamic>{};
