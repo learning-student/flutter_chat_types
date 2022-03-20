@@ -14,6 +14,7 @@ PartialImage _$PartialImageFromJson(Map<String, dynamic> json) {
     size: json['size'] as num,
     uri: json['uri'] as String,
     width: (json['width'] as num?)?.toDouble(),
+    thumbnail: json['thumbnail'] as String?,
   );
 }
 
@@ -32,5 +33,6 @@ Map<String, dynamic> _$PartialImageToJson(PartialImage instance) {
   val['size'] = instance.size;
   val['uri'] = instance.uri;
   writeNotNull('width', instance.width);
+  writeNotNull('thumbnail', instance.thumbnail);
   return val;
 }

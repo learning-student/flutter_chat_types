@@ -12,14 +12,14 @@ class PartialImage {
   /// Use [ImageMessage] to create a full message.
   /// You can use [ImageMessage.fromPartial] constructor to create a full
   /// message from a partial one.
-  const PartialImage({
-    this.height,
-    this.metadata,
-    required this.name,
-    required this.size,
-    required this.uri,
-    this.width,
-  });
+  const PartialImage(
+      {this.height,
+      this.metadata,
+      required this.name,
+      required this.size,
+      required this.uri,
+      this.width,
+      this.thumbnail});
 
   /// Creates a partial image message from a map (decoded JSON).
   factory PartialImage.fromJson(Map<String, dynamic> json) =>
@@ -45,4 +45,7 @@ class PartialImage {
 
   /// Image width in pixels
   final double? width;
+
+  /// thumbnail url or base64 image of url
+  final String? thumbnail;
 }

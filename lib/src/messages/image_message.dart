@@ -27,6 +27,7 @@ class ImageMessage extends Message {
     int? updatedAt,
     required this.uri,
     this.width,
+    this.thumbnail,
   }) : super(
           author,
           createdAt,
@@ -40,20 +41,21 @@ class ImageMessage extends Message {
         );
 
   /// Creates a full image message from a partial one.
-  ImageMessage.fromPartial({
-    required User author,
-    int? createdAt,
-    required String id,
-    required PartialImage partialImage,
-    String? remoteId,
-    String? roomId,
-    Status? status,
-    int? updatedAt,
-  })  : height = partialImage.height,
+  ImageMessage.fromPartial(
+      {required User author,
+      int? createdAt,
+      required String id,
+      required PartialImage partialImage,
+      String? remoteId,
+      String? roomId,
+      Status? status,
+      int? updatedAt})
+      : height = partialImage.height,
         name = partialImage.name,
         size = partialImage.size,
         uri = partialImage.uri,
         width = partialImage.width,
+        thumbnail = partialImage.thumbnail,
         super(
           author,
           createdAt,
@@ -91,27 +93,28 @@ class ImageMessage extends Message {
     String? text,
     int? updatedAt,
     String? uri,
+    String? thumbnail,
   }) {
     return ImageMessage(
-      author: author,
-      createdAt: createdAt,
-      height: height,
-      id: id,
-      metadata: metadata == null
-          ? null
-          : {
-              ...this.metadata ?? {},
-              ...metadata,
-            },
-      name: name,
-      remoteId: remoteId,
-      roomId: roomId,
-      size: size,
-      status: status ?? this.status,
-      updatedAt: updatedAt,
-      uri: uri ?? this.uri,
-      width: width,
-    );
+        author: author,
+        createdAt: createdAt,
+        height: height,
+        id: id,
+        metadata: metadata == null
+            ? null
+            : {
+                ...this.metadata ?? {},
+                ...metadata,
+              },
+        name: name,
+        remoteId: remoteId,
+        roomId: roomId,
+        size: size,
+        status: status ?? this.status,
+        updatedAt: updatedAt,
+        uri: uri ?? this.uri,
+        width: width,
+        thumbnail: thumbnail);
   }
 
   /// Equatable props
@@ -130,6 +133,7 @@ class ImageMessage extends Message {
         updatedAt,
         uri,
         width,
+        thumbnail,
       ];
 
   /// Image height in pixels
@@ -146,4 +150,7 @@ class ImageMessage extends Message {
 
   /// Image width in pixels
   final double? width;
+
+  /// thumbnail url or base64 image of url
+  final String? thumbnail;
 }
